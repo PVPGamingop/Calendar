@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cross-Mark Calendar (Offline)</title>
+<link rel="stylesheet" href="calendar_x.css">
+<script type="module" src="calendar_x.js"></script>
+</head>
+<body>
+    <!-- Toggle button -->
+<button id="todoToggle" class="todo-btn"><img src="to-do-list.png" height="50px" width="50px" alt=""></button>
+
+<!-- Calendar -->
+<div class="wrap" id="calendarWrap">
+
+  <div class="calendar">
+    <div class="cal-header">
+      <div class="month-name">
+        <button class="btn icon" id="prevBtn" title="Previous month">‹</button>
+        <div id="monthYear">Month Year</div>
+        <button class="btn icon" id="nextBtn" title="Next month">›</button>
+      </div>
+      <div class="ctrls">
+        <button class="btn" id="todayBtn">Today</button>
+        <button class="btn" id="clearBtn" title="Clear all marks">Clear All</button>
+      </div>
+    </div>
+
+    <div class="weekdays">
+      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+
+    <div class="grid" id="calendarGrid" aria-live="polite"></div>
+  </div>
+
+  <aside class="side">
+    <h3>Cross-Mark Calendar</h3>
+    <div class="info">
+      Click any day to mark it complete (a red “❌” will appear). Click again to remove the mark.
+     
+    </div>
+
+   
+    <div class="legend">
+      <div class="box"></div>
+      <div class="small">Completed day</div>
+    </div>
+
+  </aside>
+</div>
+
+
+<!-- To-Do List (hidden by default) -->
+<div id="todoPanel" class="todo-panel hidden">
+  <h2>📝 To-Do List</h2>
+
+  <div class="todo-input">
+    <input id="todoInput" type="text" placeholder="Add a task..." />
+    <button id="addTodo">Add</button>
+  </div>
+
+  <h3>⏳ Pending</h3>
+  <ul id="todoList"></ul>
+
+  <h3>✅ Completed</h3>
+  <ul id="completedList"></ul>
+</div>
+
+
+
+</body>
+</html>
