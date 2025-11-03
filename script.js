@@ -241,6 +241,8 @@ function addTodoItem(todo) {
     todo.completed = checkbox.checked;
     saveTodos();
     renderTodos();
+    renderPendingTasks();
+
   });
 
   // 🗑 delete item
@@ -292,3 +294,22 @@ todoToggle.addEventListener("click", () => {
 
 // ♻️ Initial render
 renderTodos();
+function renderPendingTasks() {
+  const pendingContainer = document.getElementById('pending-tasks');
+  pendingContainer.innerHTML = '';
+
+  const pending = todos.filter(task => !task.completed);
+  if (pending.length === 0) {
+    pendingContainer.innerHTML = '<li style="color:gray;">All tasks completed ✅</li>';
+    return;
+  }
+
+  pending.forEach(task => {
+    const li = document.createElement('li');
+    li.textContent = '• ' + task.text;
+    li.style.marginBottom = '6px';
+    li.style.fontSize = '15px';
+    pendingContainer.appendChild(li);
+  });
+}
+renderPendingTasks();

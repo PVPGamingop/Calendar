@@ -212,7 +212,9 @@ textarea#exportJson {
     display: flex;
     gap: 10px;
     align-items: center;
-    margin-top: 12px
+    margin-top: 12px;
+    position: relative;
+    top: 404px;
 }
 
 .legend .box {
