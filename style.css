@@ -416,3 +416,7 @@ ul {
     cursor: pointer;
 
 }
+[type="checkbox"]{
+    cursor: pointer;
+}
+
