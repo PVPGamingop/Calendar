@@ -231,6 +231,7 @@ function addTodoItem(todo) {
 
   const del = document.createElement("button");
   del.textContent = "🗑️";
+  
 
   li.appendChild(checkbox);
   li.appendChild(span);
@@ -250,6 +251,14 @@ function addTodoItem(todo) {
     todos = todos.filter(t => t !== todo);
     saveTodos();
     renderTodos();
+    renderPendingTasks();
+
+  });
+    // ✏️ sidebar edit on text click
+  span.addEventListener('click', (e) => {
+    e.stopPropagation(); // stop checkbox click conflict
+    const index = todos.indexOf(todo);
+    openSidebar(index);
   });
 
   if (todo.completed) completedList.appendChild(li);
@@ -270,12 +279,14 @@ function addTask() {
   saveTodos();
   renderTodos();
   todoInput.value = "";
+  
 }
 
 // 🎯 Add on click or Enter
 addTodo.addEventListener("click", addTask);
 todoInput.addEventListener("keydown", e => {
   if (e.key === "Enter") addTask();
+  
 });
 
 // 🔘 Toggle between Calendar & To-Do
@@ -290,6 +301,7 @@ todoToggle.addEventListener("click", () => {
     todoPanel.classList.remove("hidden");
     setTimeout(() => todoPanel.classList.add("show"), 10);
   }
+  
 });
 
 // ♻️ Initial render
@@ -313,3 +325,46 @@ function renderPendingTasks() {
   });
 }
 renderPendingTasks();
+let editingTaskIndex = null;
+
+const sidebar = document.getElementById('editSidebar');
+const editTitle = document.getElementById('editTaskTitle');
+const editDesc = document.getElementById('editTaskDesc');
+const saveBtn = document.getElementById('saveTaskBtn');
+const delBtn = document.getElementById('deleteTaskBtn');
+const closeBtn = document.getElementById('closeSidebar');
+
+function openSidebar(index) {
+  editingTaskIndex = index;
+  editTitle.value = todos[index].text;
+  editDesc.value = todos[index].desc || '';
+  sidebar.classList.add('open');
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  editingTaskIndex = null;
+}
+
+saveBtn.addEventListener('click', () => {
+  if (editingTaskIndex === null) return;
+  todos[editingTaskIndex].text = editTitle.value.trim();
+  todos[editingTaskIndex].desc = editDesc.value.trim();
+saveTodos();
+renderTodos();
+
+  renderPendingTasks();
+  closeSidebar();
+});
+
+delBtn.addEventListener('click', () => {
+  if (editingTaskIndex === null) return;
+  todos.splice(editingTaskIndex, 1);
+saveTodos();
+renderTodos();
+
+  renderPendingTasks();
+  closeSidebar();
+});
+
+closeBtn.addEventListener('click', closeSidebar);

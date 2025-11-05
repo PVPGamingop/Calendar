@@ -414,9 +414,89 @@ ul {
     color: #ff5050;
     font-size: 16px;
     cursor: pointer;
-
 }
-[type="checkbox"]{
+[type="checkbox"] {
     cursor: pointer;
+
+}
+.sidebar {
+  position: fixed;
+  top: 0; right: -400px;
+  width: 350px;
+  height: 100%;
+  background: #141a24;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
 }
 
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar input, .sidebar textarea {
+  width: 100%;
+  padding: 10px;
+  background: #1d2633;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.sidebar textarea {
+  resize: none;
+  height: 120px;
+}
+
+.sidebar-actions button {
+  padding: 8px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+#saveTaskBtn { background: #00b894; color: white; }
+#saveTaskBtn:hover { background: #009970; }
+
+#deleteTaskBtn { background: #e74c3c; color: white; }
+#deleteTaskBtn:hover { background: #c0392b; }
+
+.close-btn {
+  background: none;
+  color: #aaa;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.close-btn:hover { color: white; }
+/* To-Do text alignment fix */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 🟢 Left side align */
+  gap: 10px;
+  text-align: left;
+}
+
+/* Optional: make text stretch fully */
+.todo-item span {
+  flex: 1;
+  text-align: left;
+}
