@@ -698,9 +698,10 @@ ul {
   flex: 1;
   text-align: left;
   word-break: break-word;
+}
+#completedList span{
   text-decoration: line-through;
 }
-
 /* completed header */
 .small {
   font-size: 13px;
@@ -817,3 +818,4 @@ ul {
   display: block;
 
 }
+
