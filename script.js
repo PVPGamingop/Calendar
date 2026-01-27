@@ -438,3 +438,28 @@ selectSection('all');
 /* accessibility */
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (editSidebar.classList.contains('open')) closeEditSidebar(); if (sidebar.classList.contains('open')) sidebar.classList.remove('open'); } });
 // ===================
+// =========================
+// 🌗 THEME TOGGLE
+// =========================
+
+const themeToggle = document.getElementById("themeToggle");
+const THEME_KEY = "app_theme";
+
+// load saved theme
+const savedTheme = localStorage.getItem(THEME_KEY);
+if (savedTheme === "light") {
+  document.body.classList.add("light");
+  themeToggle.textContent = "🌞";
+}
+
+// toggle
+themeToggle.addEventListener("click", () => {
+  const isLight = document.body.classList.toggle("light");
+  localStorage.setItem(THEME_KEY, isLight ? "light" : "dark");
+  themeToggle.textContent = isLight ? "🌞" : "🌙";
+});
+if (!localStorage.getItem(THEME_KEY)) {
+  if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+    document.body.classList.add("light");
+  }
+}
