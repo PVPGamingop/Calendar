@@ -22,7 +22,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 28px;
-  overflow: hidden;
 }
 
 .wrap {
@@ -208,12 +207,12 @@ textarea#exportJson {
 
 /* footer / legend */
 .legend {
-  display: flex;
+  left: 13px;
+  display: flex;  
   gap: 10px;
   align-items: center;
   margin-top: 12px;
   position: relative;
-  top: 48%;
 }
 
 .legend .box {
@@ -292,7 +291,7 @@ textarea#exportJson {
 body {
   margin: 0;
   background: #0d0d0d;
-  color: white;
+  color: #A1A3A5;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
@@ -369,13 +368,13 @@ body {
   border: none;
   outline: none;
   background: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: #A1A3A5;
 }
 
 .todo-input button {
   background: #ff5050;
   border: none;
-  color: white;
+  color: #A1A3A5;
   border-radius: 8px;
   padding: 10px 16px;
   cursor: pointer;
@@ -449,7 +448,7 @@ ul {
   width: 100%;
   padding: 10px;
   background: #1d2633;
-  color: white;
+  color: #A1A3A5;
   border: none;
   border-radius: 6px;
   font-size: 15px;
@@ -472,7 +471,7 @@ ul {
 
 #saveTaskBtn {
   background: #00b894;
-  color: white;
+  color: #A1A3A5;
 }
 
 #saveTaskBtn:hover {
@@ -481,7 +480,7 @@ ul {
 
 #deleteTaskBtn {
   background: #e74c3c;
-  color: white;
+  color: #A1A3A5;
 }
 
 #deleteTaskBtn:hover {
@@ -498,7 +497,7 @@ ul {
 }
 
 .close-btn:hover {
-  color: white;
+  color: #A1A3A5;
 }
 
 /* To-Do text alignment fix */
@@ -876,7 +875,7 @@ body.light textarea {
 }
 
 body.light .todo-panel {
-  background: white;
+  background: #A1A3A5;
 }
 
 body.light .section-item.active {
@@ -888,10 +887,15 @@ body.light .today {
   background: rgba(255, 80, 80, 0.15);
   box-shadow: 0 0 10px rgba(255, 80, 80, 0.4);
 }
+
 .day .num {
-  color: white;
+  color: #A1A3A5;
 }
 
 body.light .day .num {
+  color: black;
+}
+
+body.light #editSidebar h3 {
   color: black;
 }

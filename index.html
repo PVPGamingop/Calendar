@@ -11,9 +11,22 @@
 
 <body>
   <button id="themeToggle" class="btn" style="position:fixed; bottom:20px; right:20px; z-index:2000;">
-  🌙
-</button>
-
+    🌙
+  </button>
+  <div>
+    <!-- edit sidebar -->
+    <div id="editSidebar" class="edit-sidebar" aria-hidden="true">
+      <button id="closeSidebar" class="btn" style="float:right">✕</button>
+      <h3 style="margin-top:6px">Edit Task</h3>
+      <input id="editTaskTitle" placeholder="Task title" />
+      <textarea id="editTaskDesc" placeholder="Details (optional)"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button id="saveTaskBtn" class="btn">💾 Save</button>
+        <button id="deleteTaskBtn" class="btn" style="background:rgba(255,59,107,0.08); color:#ff7b7b">🗑️
+          Delete</button>
+      </div>
+    </div>
+  </div>
   <!-- Toggle button -->
   <button id="todoToggle" class="todo-btn"><img src="to-do-list.png" height="50px" width="50px" alt=""></button>
 
@@ -52,9 +65,10 @@
         Click any day to mark it complete (a red “❌” will appear). Click again to remove the mark.
 
       </div>
-      <div id="pending-section" class="card" style="margin-top:20px; padding:16px;">
-        <h2 style="position: relative;"> 🕒 Pending Tasks</h2>
-        <ul id="pending-tasks" style="list-style:none; padding:0; margin:0;"></ul>
+      <div id="pending-section" class="card"
+        style="margin-top:20px; padding:16px; margin: 0; height: auto;overflow-wrap: break-word;max-height: 550px;overflow-y: scroll;">
+        <h2 style="position: relative; left: -10px;"> 🕒 Pending Tasks</h2>
+        <ul id="pending-tasks" style="list-style:disc;position: relative;left: 10px; padding:0; margin:0;"></ul>
       </div>
 
 
@@ -70,67 +84,57 @@
 
   <!-- To-Do List (hidden by default) -->
   <div id="todoPanel" class="todo-panel hidden">
-      <div class="top-left">
-    <button id="hambtn" class="hambtn">☰</button>
-  </div>
-
-  <!-- sidebar -->
-  <div id="sidebar" class="sidebar" aria-hidden="true">
-    <h3>Sections</h3>
-    <div class="flex" style="margin-bottom:10px;">
-      <input id="newSectionInput" placeholder="New section name"
-        style="flex:1; padding:8px; border-radius:8px; border:none; outline:none; background:rgba(255,255,255,0.02); color:#e6eef6;" />
-      <button id="addSectionBtn" class="btn">+ Add</button>
+    <div class="top-left">
+      <button id="hambtn" class="hambtn">☰</button>
     </div>
-    <ul id="sectionList" class="section-list"></ul>
-    <div style="margin-top:14px;" class="small">Tip: Sections keep tasks separate from "All Tasks". Drag to reorder
-      tasks inside lists.</div>
+
+
+    <!-- sidebar -->
+    <div id="sidebar" class="sidebar" aria-hidden="true">
+      <h3>Sections</h3>
+      <div class="flex" style="margin-bottom:10px;">
+        <input id="newSectionInput" placeholder="New section name"
+          style="flex:1; padding:8px; border-radius:8px; border:none; outline:none; background:rgba(255,255,255,0.02); color:#e6eef6;" />
+        <button id="addSectionBtn" class="btn">+ Add</button>
+      </div>
+      <ul id="sectionList" class="section-list"></ul>
+      <div style="margin-top:14px;" class="small">Tip: Sections keep tasks separate from "All Tasks". Drag to reorder
+        tasks inside lists.</div>
+    </div>
+
+
+    <div class="container">
+      <!-- main todo panel -->
+      <aside id="to-doPanel" class="card panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <h3 id="todoHeader" style="margin:0">All Tasks</h3>
+          <div class="small" id="sectionInfo">Viewing: All</div>
+        </div>
+
+        <div class="todo-input">
+          <input id="todoInput" placeholder="Add a task (Enter) — will add to current view" />
+          <button id="addTodoBtn" class="btn">Add</button>
+        </div>
+
+
+        <ul id="todoList" class="todo-list" aria-label="Pending tasks"></ul>
+
+        <div style="margin-top:12px;" class="small">Completed</div>
+        <ul id="completedList" class="todo-list"></ul>
+      </aside>
+
+      <!-- right column (empty placeholder) -->
+      <div class="card">
+        <h3 style="margin-top:0">Info</h3>
+        <p class="small">This test view contains only the To-Do + Sections module with drag & drop. Use the hamburger to
+          manage sections. Click a task's text to edit in the right sidebar.</p>
+      </div>
+    </div>
+
+
   </div>
 
   <div id="dim" class="dim"></div>
-
-  <div class="container">
-    <!-- main todo panel -->
-    <aside id="to-doPanel" class="card panel">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <h3 id="todoHeader" style="margin:0">All Tasks</h3>
-        <div class="small" id="sectionInfo">Viewing: All</div>
-      </div>
-
-      <div class="todo-input">
-        <input id="todoInput" placeholder="Add a task (Enter) — will add to current view" />
-        <button id="addTodoBtn" class="btn">Add</button>
-      </div>
-
-
-      <ul id="todoList" class="todo-list" aria-label="Pending tasks"></ul>
-
-      <div style="margin-top:12px;" class="small">Completed</div>
-      <ul id="completedList" class="todo-list"></ul>
-    </aside>
-
-    <!-- right column (empty placeholder) -->
-    <div class="card">
-      <h3 style="margin-top:0">Info</h3>
-      <p class="small">This test view contains only the To-Do + Sections module with drag & drop. Use the hamburger to
-        manage sections. Click a task's text to edit in the right sidebar.</p>
-    </div>
-  </div>
-
-  <!-- edit sidebar -->
-  <div id="editSidebar" class="edit-sidebar" aria-hidden="true">
-    <button id="closeSidebar" class="btn" style="float:right">✕</button>
-    <h3 style="margin-top:6px">Edit Task</h3>
-    <input id="editTaskTitle" placeholder="Task title" />
-    <textarea id="editTaskDesc" placeholder="Details (optional)"></textarea>
-    <div style="display:flex; gap:8px; margin-top:8px;">
-      <button id="saveTaskBtn" class="btn">💾 Save</button>
-      <button id="deleteTaskBtn" class="btn" style="background:rgba(255,59,107,0.08); color:#ff7b7b">🗑️ Delete</button>
-    </div>
-  </div>
-
-  </div>
-
 
 
 </body>

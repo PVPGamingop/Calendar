@@ -308,6 +308,7 @@ function renderTodos() {
   const done = list.filter(t => t.completed);
   pending.forEach((t, i) => createTaskElement(t, i, false));
   done.forEach((t, i) => createTaskElement(t, i, true));
+  renderPending();
 }
 
 /* create li element with drag/drop + events */
@@ -394,10 +395,28 @@ function addTask() {
 }
 addTodoBtn.addEventListener('click', addTask);
 todoInput.addEventListener('keydown', e => { if (e.key === 'Enter') addTask(); });
+const pendingListEl = document.getElementById("pending-tasks");
 
 /* render pending list (only All Tasks) */
 function renderPending() {
-  // optional: not displayed here (we have only todo panel). But can be implemented if needed
+pendingListEl.innerHTML = "";
+
+  // ALL sections ke pending tasks
+  const allTasks = [
+    ...store.all,
+    ...Object.values(store.sections).flat()
+  ];
+
+  const pending = allTasks.filter(task => !task.completed);
+
+  pending.forEach(task => {
+    const li = document.createElement("li");
+    li.textContent = task.text;
+    pendingListEl.appendChild(li);
+  });
+if (pending.length === 0) {
+  pendingListEl.innerHTML = "<li style='opacity:.6'>No pending tasks 🎉</li>";
+}
 }
 
 /* edit sidebar */
