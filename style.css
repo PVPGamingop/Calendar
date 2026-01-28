@@ -539,7 +539,6 @@ ul {
 
 .hambtn {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-  border: 1px solid rgba(255, 255, 255, 0.04);
   color: var(--muted);
   padding: 10px 12px;
   border-radius: 10px;
@@ -898,4 +897,5 @@ body.light .day .num {
 
 body.light #editSidebar h3 {
   color: black;
+
 }
